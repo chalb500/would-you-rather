@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import NavigationBar from './NavigationBar'
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
 import { Table } from 'reactstrap'
@@ -13,7 +12,6 @@ class Leaderboard extends Component {
       <div>
         {authedUser 
           ? <div>
-            <NavigationBar />
             <Table>
               <thead>
                 <tr>

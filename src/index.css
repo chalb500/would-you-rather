@@ -23,7 +23,7 @@ body {
   border-radius: 50%
 }
 
-.unanswered-hero-image {
+.question-hero-image {
   width: 200px;
   height: 200px;
   border-radius: 50%;
@@ -38,13 +38,17 @@ body {
   margin-top: 10px;
 }
 
+.vertical-divider {
+  margin-top: 20px;
+}
+
 .center-buttons {
   display: block;
   margin-left: auto;
   margin-right: auto;
 }
 
-.divider{
+.divider {
   width:20px;
   height:auto;
   display:inline-block;

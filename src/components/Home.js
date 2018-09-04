@@ -1,7 +1,6 @@
 import React, {Component} from 'react'
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
-import NavigationBar from './NavigationBar'
 import { Button } from 'reactstrap'
 import QuestionList from './QuestionList'
 
@@ -45,7 +44,6 @@ class Home extends Component {
       <div>
         {authedUser
           ? <div>
-              <NavigationBar />
               Question Type: 
               <Button 
                 color='link'

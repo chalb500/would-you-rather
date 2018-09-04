@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
-import NavigationBar from './NavigationBar'
 import { Button, Form, Input, Label, FormGroup } from 'reactstrap';
 import { handleSaveQuestion, addQuestion } from '../actions/questions'
 import { handleGetUsers, receiveUsers } from '../actions/users'
@@ -51,7 +50,6 @@ class AddQuestion extends Component {
       <div>
         {authedUser
           ? <div>
-            <NavigationBar />
             <div>Would you rather?</div>
             <Form>
               <FormGroup>

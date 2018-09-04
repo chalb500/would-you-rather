@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import NavigationBar from './NavigationBar'
 import { connect } from 'react-redux'
 import NotFound from './NotFound'
 import AnsweredQuestion from './AnsweredQuestion';
@@ -21,7 +20,6 @@ class QuestionDetail extends Component {
           questions[id].optionTwo.votes.includes(authedUser)) {
           return (
             <div>
-              <NavigationBar />
               <AnsweredQuestion id={id} />
             </div>
           )
@@ -30,7 +28,6 @@ class QuestionDetail extends Component {
         else {
           return (
             <div>
-              <NavigationBar />
               <UnansweredQuestion id={id} />
             </div>
           )
@@ -40,7 +37,6 @@ class QuestionDetail extends Component {
       else {
         return (
           <div>
-            <NavigationBar />
             <NotFound />
           </div>
         )

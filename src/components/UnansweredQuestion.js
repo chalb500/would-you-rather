@@ -24,7 +24,8 @@ class UnansweredQuestion extends Component {
         <div>
           <img 
             src={users[questions[id].author].avatarURL}
-            className='unanswered-hero-image' />
+            className='question-hero-image'
+            alt='avatar' />
         </div>
         <div className='center'>
           Would you rather:

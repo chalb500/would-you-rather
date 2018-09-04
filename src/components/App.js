@@ -9,6 +9,7 @@ import QuestionDetail from './QuestionDetail'
 import NotFound from './NotFound'
 import AddQuestion from './AddQuestion'
 import Leaderboard from './Leaderboard'
+import NavigationBar from './NavigationBar'
 
 //TODO: Add routes for answered, unanswered
 
@@ -25,6 +26,7 @@ class App extends Component {
             ? null
             : <div>
                 <h1 className='text-center page-title'>Would you rather?</h1>
+                <NavigationBar />
                 <Route path='/' exact component={Home} />
                 <Route path='/login' component={Login} />
                 <Route path='/questions/:id' component={QuestionDetail} />

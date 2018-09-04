@@ -15,7 +15,7 @@ class NavigationBar extends Component {
     return (
       <div className='mx-auto'>
         <Navbar color="light" light expand="md">
-          <NavbarBrand>Hello { authedUser }</NavbarBrand>
+          <NavbarBrand>{authedUser ? `Hello ${authedUser}` : 'Not logged in'}</NavbarBrand>
             <Nav className="ml-auto" navbar>
               <NavItem className='nav-item'>
                 <Link to='/'>Home</Link>

@@ -39,21 +39,26 @@ class AnsweredQuestion extends Component {
     return (
       <div>
         <div>
-          { users[questions[id].author].avatarURL} 
+          <img 
+            src={users[questions[id].author].avatarURL} 
+            className='question-hero-image'
+            alt='avatar'/>
         </div>
-        <div>
-          Would you rather:
+        <div className='center'>
           <div>
+            Would you rather:
+          </div>
+          <div className='vertical-divider'>
             <h5>{questions[id].optionOne.text}</h5>
             <div>{`Total number of votes: ${this.totalNumberOfVotes(1)}`}</div>
             <div>{`Total percentage of votes: ${this.totalPercentageOfVotes(1)}%`}</div>
             <div hidden={hideOptionOne}>You selected this option</div>
           </div>
+          <div className='vertical-divider'>
             <h5>{questions[id].optionTwo.text}</h5>
             <div>{`Total number of votes: ${this.totalNumberOfVotes(2)}`}</div>
             <div>{`Total percentage of votes: ${this.totalPercentageOfVotes(2)}%`}</div>
             <div hidden={!hideOptionOne}>You selected this option</div>
-          <div>
           </div>
         </div>
       </div>
