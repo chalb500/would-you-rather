@@ -53,3 +53,22 @@ body {
   height:auto;
   display:inline-block;
 }
+
+.question-list {
+  list-style-type:none;
+  padding:2px;
+  vertical-align:middle;
+  color:835600;
+  margin-left:auto;
+  margin-right:auto;
+  text-align:center;
+  width: 500px;
+}
+
+.question-list-container {
+  margin-top: 20px
+}
+
+.question-type-button {
+  margin-top: 20px;
+}

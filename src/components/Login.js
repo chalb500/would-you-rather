@@ -40,8 +40,12 @@ class Login extends Component {
   render() {
     const { errorHidden, loggedIn } = this.state
 
+    //In the event the user navigates directly to the login page
+    if (loggedIn && !this.props.location.state){
+      return <Redirect to='/' />
+    } 
     //Take the user back to where they were
-    if (loggedIn) {
+    else if (loggedIn) {
       return <Redirect to={this.props.location.state.previousUrl} />
     } 
 

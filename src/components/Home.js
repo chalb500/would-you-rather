@@ -43,25 +43,25 @@ class Home extends Component {
     return(
       <div>
         {authedUser
-          ? <div>
-              Question Type: 
+          ? <div className='center'>
               <Button 
-                color='link'
+                className='btn question-type-button'
                 onClick={(e) => this.handleToggleQuestionType(true, e)}>
-                  Unanswered Questions
+                  Show Unanswered Questions
               </Button>
+              <div className='divider' />
               <Button 
-                color='link'
+                className='btn question-type-button'
                 onClick={(e) => this.handleToggleQuestionType(false, e)}>
-                  Answered Questions
+                  Show Answered Questions
               </Button>
               {showUnanswered
-                 ? <div>
-                    <h3>Unanswered</h3>
+                 ? <div className='question-list-container'>
+                    <h3>Unanswered Questions</h3>
                     <QuestionList questions={unansweredQuestions} />
                    </div>
-                 : <div>
-                    <h3>Answered</h3>
+                 : <div className='question-list-container'>
+                    <h3>Answered Questions</h3>
                     <QuestionList questions={answeredQuestions} />
                    </div>
               }
