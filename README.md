@@ -19,3 +19,7 @@
   * Change directory into the Would You Rather folder
   * Type 'yarn start'
   * Press Enter
+
+4. Login to the application
+  * Type in a username; valid usernames are: tylermcginnis, johndoe, and sarahedo
+  * Click the Login button

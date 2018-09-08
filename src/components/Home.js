@@ -6,9 +6,7 @@ import Switch from '@material-ui/core/Switch';
 
 class Home extends Component {
   state = {
-    checked: true,
-    answeredQuestions: this.getAnsweredQuestions(this.props.questions)[0],
-    unansweredQuestions: this.getAnsweredQuestions(this.props.questions)[1]
+    checked: true
   }
   hangleToggle = (e) => {
     this.setState({
@@ -17,29 +15,33 @@ class Home extends Component {
   }
   getAnsweredQuestions(questions) {
     const { authedUser } = this.props
-    
-    let answeredQuestions = []
-    let unansweredQuestions = []
 
     //Sort the keys according to timestamp
     let sortedQuestionKeys = Object.keys(questions)
       .sort((a, b) => questions[b].timestamp - questions[a].timestamp)
 
-    //Find the answered questions
-    sortedQuestionKeys.forEach((key) => {
-      if (questions[key].optionOne.votes.includes(authedUser) || questions[key].optionTwo.votes.includes(authedUser)) {
-        answeredQuestions.push(questions[key]);
+    //Determine the answered and unanswered questions
+    return sortedQuestionKeys.reduce((acc, key) => {
+      const question = questions[key]
+      if(this.hasAnswered(question, authedUser)) {
+        acc["answered"] = acc["answered"].concat([ question ])
       } else {
-        unansweredQuestions.push(questions[key]);
+        acc["unanswered"] = acc["unanswered"].concat([ question ])
       }
-    })
 
-    return [answeredQuestions, unansweredQuestions]
+      return acc
+    }, {answered: [], unanswered: []})
+  }
+  hasAnswered = (question, authedUser) => {
+    const { votes: votes1 } = question.optionOne
+    const { votes: votes2 } = question.optionTwo 
+    return votes1.includes(authedUser) || votes2.includes(authedUser)
   }
   render() {
-    const {authedUser} = this.props
-    const {answeredQuestions, unansweredQuestions, checked} = this.state
-    
+    const { authedUser, questions } = this.props
+    const { checked } = this.state
+    const { answered, unanswered } = this.getAnsweredQuestions(questions)
+
     return(
       <div >
         {authedUser
@@ -52,11 +54,11 @@ class Home extends Component {
               {checked
                  ? <div className='question-list-container center'>
                     <h3>Unanswered Questions</h3>
-                    <QuestionList questions={unansweredQuestions} />
+                    <QuestionList questions={unanswered} />
                    </div>
                  : <div className='question-list-container center'>
                     <h3>Answered Questions</h3>
-                    <QuestionList questions={answeredQuestions} />
+                    <QuestionList questions={answered} />
                    </div>
               }
             </div>

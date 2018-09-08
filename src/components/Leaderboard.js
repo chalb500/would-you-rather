@@ -1,48 +1,46 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
 import { Table } from 'reactstrap'
 import LeaderboardItem from './LeaderboardItem';
 
-class Leaderboard extends Component {
-  render() {
-    const {authedUser, users, userIds} = this.props
-    
-    return (
-      <div>
-        {authedUser 
-          ? <div>
-            <Table>
-              <thead>
-                <tr>
-                  <th>Avatar</th>
-                  <th>Name</th>
-                  <th># Questions Asked</th>
-                  <th># Questions Answered</th>
-                </tr>
-              </thead>
-              <tbody>
-                {
-                  userIds.map((key) => (
-                    <LeaderboardItem 
-                      key={key} 
-                      avatarURL={users[key].avatarURL} 
-                      name={users[key].name}
-                      questionsAsked={users[key].questions.length}
-                      questionsAnswered={Object.keys(users[key].answers).length} />
-                  ))
-                }
-              </tbody>
-            </Table>
-          </div>
-          : <Redirect to={{
-            pathname: '/login',
-            state: { previousUrl: `/leaderboard`}
-           }} />
-        }
-      </div>
-    )
-  }
+const Leaderboard = (props) => {
+  const {authedUser, users, userIds} = props
+
+  return (
+    <div>
+      {authedUser 
+        ? <div>
+          <Table>
+            <thead>
+              <tr>
+                <th>Avatar</th>
+                <th>Name</th>
+                <th># Questions Asked</th>
+                <th># Questions Answered</th>
+              </tr>
+            </thead>
+            <tbody>
+              {
+                userIds.map((key) => (
+                  <LeaderboardItem 
+                    key={key} 
+                    avatarURL={users[key].avatarURL} 
+                    name={users[key].name}
+                    questionsAsked={users[key].questions.length}
+                    questionsAnswered={Object.keys(users[key].answers).length} />
+                ))
+              }
+            </tbody>
+          </Table>
+        </div>
+        : <Redirect to={{
+          pathname: '/login',
+          state: { previousUrl: `/leaderboard`}
+         }} />
+      }
+    </div>
+  )
 }
 
 function sortUsers(users) {

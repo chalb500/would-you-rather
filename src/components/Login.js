@@ -51,7 +51,7 @@ class Login extends Component {
 
     return (
       <div>
-          <Form>
+          <Form onSubmit={this.handleLogin}>
             <div className='row login-box'>
               <div className='mx-auto col-4'>
                 <FormGroup>
@@ -71,7 +71,7 @@ class Login extends Component {
                 </Alert>
                 <Button 
                   className='btn'
-                  onClick={this.handleLogin}>
+                  type='submit'>
                     Login
                 </Button>
               </div>
