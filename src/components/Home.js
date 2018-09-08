@@ -1,18 +1,18 @@
 import React, {Component} from 'react'
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
-import { Button } from 'reactstrap'
 import QuestionList from './QuestionList'
+import Switch from '@material-ui/core/Switch';
 
 class Home extends Component {
   state = {
-    showUnanswered: true,
+    checked: true,
     answeredQuestions: this.getAnsweredQuestions(this.props.questions)[0],
     unansweredQuestions: this.getAnsweredQuestions(this.props.questions)[1]
   }
-  handleToggleQuestionType(shouldShow, e) {
+  hangleToggle = (e) => {
     this.setState({
-      showUnanswered: shouldShow
+      checked: e.target.checked
     })
   }
   getAnsweredQuestions(questions) {
@@ -38,29 +38,23 @@ class Home extends Component {
   }
   render() {
     const {authedUser} = this.props
-    const {showUnanswered, answeredQuestions, unansweredQuestions} = this.state
+    const {answeredQuestions, unansweredQuestions, checked} = this.state
     
     return(
-      <div>
+      <div >
         {authedUser
-          ? <div className='center'>
-              <Button 
-                className='btn question-type-button'
-                onClick={(e) => this.handleToggleQuestionType(true, e)}>
-                  Show Unanswered Questions
-              </Button>
-              <div className='divider' />
-              <Button 
-                className='btn question-type-button'
-                onClick={(e) => this.handleToggleQuestionType(false, e)}>
-                  Show Answered Questions
-              </Button>
-              {showUnanswered
-                 ? <div className='question-list-container'>
+          ? <div>
+              <Switch 
+                onChange={this.hangleToggle}
+                checked={this.state.checked}
+                color='primary' /> 
+                Show Unanswered
+              {checked
+                 ? <div className='question-list-container center'>
                     <h3>Unanswered Questions</h3>
                     <QuestionList questions={unansweredQuestions} />
                    </div>
-                 : <div className='question-list-container'>
+                 : <div className='question-list-container center'>
                     <h3>Answered Questions</h3>
                     <QuestionList questions={answeredQuestions} />
                    </div>

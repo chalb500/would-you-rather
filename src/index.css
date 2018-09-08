@@ -69,6 +69,16 @@ body {
   margin-top: 20px
 }
 
-.question-type-button {
-  margin-top: 20px;
+.question-options-form {
+  width: 300px;
 }
+
+.question-options-container {
+  margin-top: 10px;
+  margin-left: 20px;
+}
+
+.question-options-text {
+  margin-bottom: 20px;
+}
+

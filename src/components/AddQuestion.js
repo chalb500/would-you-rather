@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
-import { Button, Form, Input, Label, FormGroup } from 'reactstrap';
+import { Button, Form, Input, FormGroup } from 'reactstrap';
 import { handleSaveQuestion, addQuestion } from '../actions/questions'
 import { handleGetUsers, receiveUsers } from '../actions/users'
 
@@ -49,20 +49,20 @@ class AddQuestion extends Component {
     return (
       <div>
         {authedUser
-          ? <div>
-            <div>Would you rather?</div>
-            <Form>
+          ? <div className='question-options-container'>
+            <div className='question-options-text'>Would you rather?</div>
+            <Form className='question-options-form'>
               <FormGroup>
-                <Label>Option 1:</Label>
                 <Input 
                   type='text'
-                  onChange={this.handleOptionOneChange}/>
+                  onChange={this.handleOptionOneChange}
+                  placeholder='Option 1' />
               </FormGroup>
               <FormGroup>
-                <Label>Option 2:</Label>
                 <Input 
                   type='text'
-                  onChange={this.handleOptionTwoChange}/>
+                  onChange={this.handleOptionTwoChange} 
+                  placeholder='Option 2'/>
               </FormGroup>
               <Button 
                 className='btn'
